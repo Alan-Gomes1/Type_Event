@@ -22,4 +22,8 @@ urlpatterns = [
         'gerar_certificado/<int:id>/',
         views.gerar_certificado, name='gerar_certificado'
     ),
+    path(
+        'procurar_certificado/<int:id>/',
+        views.procurar_certificado, name='procurar_certificado'
+    ),
 ]
