@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFont
 from .models import Certificado, Evento
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def novo_evento(request):
     if request.method == "GET":
         return render(request, 'novo_evento.html')
@@ -55,7 +55,7 @@ def novo_evento(request):
         return redirect(reverse('novo_evento'))
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def gerenciar_evento(request):
     if request.method == "GET":
         nome = request.GET.get('nome')
@@ -67,7 +67,7 @@ def gerenciar_evento(request):
         return render(request, 'gerenciar_evento.html', {'eventos': eventos})
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def inscrever_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
     if request.method == 'GET':
@@ -83,7 +83,7 @@ def inscrever_evento(request, id):
         return redirect(reverse('inscrever_evento', kwargs={'id': id}))
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def participantes_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
 
@@ -98,7 +98,7 @@ def participantes_evento(request, id):
         )
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def gerar_csv(request, id):
     evento = get_object_or_404(Evento, id=id)
 
@@ -118,7 +118,7 @@ def gerar_csv(request, id):
     return redirect(f'/media/csv/{token}.csv')
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def certificados_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
     participantes = evento.participantes.all()
@@ -136,7 +136,7 @@ def certificados_evento(request, id):
         )
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def gerar_certificado(request, id):
     evento = get_object_or_404(Evento, id=id)
     participantes = evento.participantes.all()
@@ -194,7 +194,7 @@ def gerar_certificado(request, id):
     return redirect(reverse('certificados_evento', kwargs={'id': id}))
 
 
-@login_required
+@login_required(login_url='/usuarios/login')
 def procurar_certificado(request, id):
     evento = get_object_or_404(Evento, id=id)
     participantes = evento.participantes.all()
