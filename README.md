@@ -27,6 +27,11 @@ Site de cadastro de eventos
   <img alt="Página de cadastro de eventos" src="./img/novo_evento.png" width="100%">
 </p>
 
+## Página de evento
+<p align="center">
+  <img alt="Página de descrição do evento" src="./img/evento.png" width="100%">
+</p>
+
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
